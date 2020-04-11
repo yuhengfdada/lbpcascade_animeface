@@ -1,4 +1,4 @@
-import cv2
+from cv2 import cv2
 import sys
 import os.path
 
@@ -17,11 +17,11 @@ def detect(filename, cascade_file = "../lbpcascade_animeface.xml"):
                                      minNeighbors = 5,
                                      minSize = (24, 24))
     for (x, y, w, h) in faces:
-        cv2.rectangle(image, (x, y), (x + w, y + h), (0, 0, 255), 2)
-
-    cv2.imshow("AnimeFaceDetect", image)
-    cv2.waitKey(0)
-    cv2.imwrite("out.png", image)
+        #cv2.rectangle(image, (x-w//4, y-w//4), (x + 5*w//4, y + 5*h//4), (0, 0, 255), 2)
+        out = image[y-w//4:y+5*h//4,x-w//4:x+5*w//4]
+    #cv2.imshow("AnimeFaceDetect", image)
+    #cv2.waitKey(0)
+    cv2.imwrite("out.png", out)
 
 if len(sys.argv) != 2:
     sys.stderr.write("usage: detect.py <filename>\n")
