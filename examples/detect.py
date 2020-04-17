@@ -2,7 +2,7 @@ from cv2 import cv2
 import sys
 import os.path
 
-def detect(filename, cascade_file = "../lbpcascade_animeface.xml", index = s):
+def detect(filename, s, cascade_file = "../lbpcascade_animeface.xml"):
     if not os.path.isfile(cascade_file):
         raise RuntimeError("%s: not found" % cascade_file)
     try:
@@ -28,7 +28,7 @@ def detect(filename, cascade_file = "../lbpcascade_animeface.xml", index = s):
     except:
         print('one pic error!')
 
-for i in range(47050):
-    s = str(i).zfill(5)
-    detect(filename = '../../illustration2vec/images/{}.jpg'.format(s),index=s)
+for i in range(1,47050):
+    string = str(i).zfill(5)
+    detect(filename = '../../illustration2vec/images/{}.jpg'.format(string),s=string)
 
